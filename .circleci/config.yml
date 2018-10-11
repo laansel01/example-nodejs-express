@@ -62,4 +62,16 @@ jobs:
             docker build -t mklx1319/example-nodejs-circle:${CIRCLE_SHA1} .
             docker push mklx1319/example-nodejs-circle:latest
             docker push mklx1319/example-nodejs-circle:${CIRCLE_SHA1}
-          
+      - run: echo Done
+workflows:
+  version: 2
+  build_test_ship_deploy:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - ship:
+          requires:
+            - build
+            - test
