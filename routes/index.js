@@ -34,7 +34,7 @@ router.get("/plus/:a/:b", function (req, res, next) {
   } = req.params
   if (isNaN(a) || isNaN(b)) {
     return res.status(400).json({
-      answer:"A or B not a number",
+      answer:"A or B not a nuber",
       a,
       b,
       operation: "plus"
